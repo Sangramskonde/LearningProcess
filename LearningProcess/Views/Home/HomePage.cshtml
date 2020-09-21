@@ -1,0 +1,52 @@
+﻿@model LearningProcess.Models.HomePage
+
+
+
+<h2>Intuitive Login</h2>
+
+@using (Html.BeginForm())
+{
+  
+    <div class="form-horizontal mx-auto">
+    <hr />
+    @using (Html.BeginForm("HomeController", "Home", FormMethod.Post)
+    {
+    @Html.DropDownListFor(m => m.User,HomePage.GetSelectUser())
+    <input type="submit" value="Send" />
+    }
+    <div class="form-group">
+        @Html.LabelFor(model => model.User, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.User, new SelectList(ViewBag.List), "Select Your Role", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
+        </div>
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+        </div>
+        <input type="submit" value="Login" class="btn btn-default" />
+
+        <input type="submit" value="Reset" class="btn btn-default" />
+    </div>
+</div>
+
+}
+
+
